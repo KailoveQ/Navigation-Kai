@@ -130,16 +130,14 @@ var random = function randomHexColor() {
 var x = localStorage.getItem('x');
 var xObject = JSON.parse(x);
 var hashMap = xObject || [{
-  logo: 'Q',
-  color: '#fd4f49',
-  url: 'https://qq.com'
+  logo: 'T',
+  color: '#f60',
+  url: 'https://tb.alicdn.com/snapshot/index.html'
 }];
-console.log(hashMap);
 
 var render = function render() {
   $a.siblings().remove();
   hashMap.forEach(function (node, index) {
-    console.log(index);
     var $b = $("\n        <div class=\"item item-x\" style=\"background: ".concat(node.color, ";\">\n            \n            <div class=\"close\">\n                    <svg class=\"icon\" aria-hidden=\"true\">\n                    <use xlink:href=\"#icon-close\"></use>\n                    </svg>\n            </div>\n            <div class=\"logo-first\">").concat(node.logo, "</div>\n            \n        </div>\n        ")).insertBefore($a);
     $b.on('click', function () {
       window.open(node.url);
@@ -164,10 +162,9 @@ $('.addButton').on('click', function () {
     url = 'https://' + url;
   }
 
-  var urlfirst = url.replace("https://", "");
-  console.log(urlfirst[0]);
+  var urlfirst = url.replace("https://", "").replace('http://', '').replace('www.', '').replace(/\/.*/, '');
+  console.log(urlfirst);
   var uf = urlfirst[0];
-  console.log(url);
   color = random();
   hashMap.push({
     logo: uf,
@@ -175,11 +172,13 @@ $('.addButton').on('click', function () {
     url: url
   });
   render();
-}); // window.onbeforeunload = () =>{
-//     console.log('页面要关闭了')
-//     const string  =JSON.stringify(hashMap)
-//     localStorage.setItem('x',string)
-// }
+});
+
+window.onbeforeunload = function () {
+  console.log('页面要关闭了');
+  var string = JSON.stringify(hashMap);
+  localStorage.setItem('x', string);
+};
 
 $(document).on('keypress', function (e) {
   console.log(e);
@@ -204,4 +203,4 @@ $('.searchForm').on('keypress', function (e) {
   e.stopPropagation();
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.8280da81.js.map
+//# sourceMappingURL=main.d84778be.js.map

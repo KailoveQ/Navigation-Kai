@@ -7,13 +7,11 @@ const random=function randomHexColor() {	//随机生成十六进制颜色
 const x=localStorage.getItem('x')
 const xObject = JSON.parse(x)
 const hashMap= xObject ||[
-    {logo:'Q',color: '#fd4f49', url:'https://qq.com'},
+    {logo:'T',color: '#f60', url:'https://tb.alicdn.com/snapshot/index.html'},
 ]
-console.log(hashMap)
 const render =()=>{
     $a.siblings().remove()
     hashMap.forEach((node,index)=>{
-        console.log(index)
         const $b =$(`
         <div class="item item-x" style="background: ${node.color};">
             
@@ -50,18 +48,21 @@ $('.addButton') .on('click',()=>{
         url= 'https://' + url
     }
     const urlfirst= url.replace("https://","")
-    console .log(urlfirst[0])
+    .replace('http://', '')
+    .replace('www.', '')
+    .replace(/\/.*/, '')
+
+    console .log(urlfirst)
     const uf= urlfirst[0]
-    console.log(url)
     color= random()
     hashMap.push({logo:uf,color: color, url:url})
     render()
 });
-// window.onbeforeunload = () =>{
-//     console.log('页面要关闭了')
-//     const string  =JSON.stringify(hashMap)
-//     localStorage.setItem('x',string)
-// }
+window.onbeforeunload = () =>{
+    console.log('页面要关闭了')
+    const string  =JSON.stringify(hashMap)
+    localStorage.setItem('x',string)
+}
 $(document).on('keypress',(e)=>{
     console.log(e)
     const key = e.key
