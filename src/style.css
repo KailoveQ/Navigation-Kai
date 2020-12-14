@@ -73,6 +73,10 @@ ol {
   font-size: 80px;
   font-family: "油菜花手绘字体";
 }
+@font-face {
+  font-family: "油菜花手绘字体";
+  src: url("./font/油菜花手绘字体.ttf");
+}
 @media (max-width: 500px) {
   body {
     background-image: url(./img/bgs1.png);
