@@ -3,31 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
-@font-face {
-  font-family: YCH;
-  src: url("./font/油菜花手绘字体.ttf");
-}
+
 body {
   background-image: url("./img/bg.png");
-  min-height: 100%;
+  /* min-height: 100%vh; */
+  background-size: 100% 100%;
   background-size: cover;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   /* background-size: cover; */
-
-  background-position: right top;
 }
 ul,
 ol {
   list-style: none;
 }
-/* @media (max-width: 500px) {
-  body {
-    background-image: url("./img/bgs.png");
-    border: 1px solid red;
-    background-repeat: repeat;
-    background-position: right top;
-  }
-} */
 
 /* 打子效果 */
 .typing {
@@ -37,11 +25,20 @@ ol {
 }
 /* 打印效果 */
 @keyframes typing {
-  from {
+  0% {
     width: 0;
   }
-  to {
-    width: 3em;
+  66% {
+    width: 1em;
+  }
+  70% {
+    width: 4em;
+  }
+  88% {
+    width: 6em;
+  }
+  100% {
+    width: 8em;
   }
 }
 
@@ -52,37 +49,33 @@ ol {
 }
 .headerNav :hover {
   transform: scale(1.1);
-  color: rgb(240, 98, 54);
 }
 .headerNav .logo {
   display: flex;
   justify-content: center;
   margin-top: 30vh;
-  color: rgb(248, 242, 242);
 }
-.logo-Right {
+.headerNav .logo .logo-Name {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.logo-Right .logo-Peng {
-  width: 80px;
+.headerNav .logo .logo-Name img {
+  max-width: 150px;
+}
+.headerNav .logo .logo-Peng {
+  margin-left: -12px;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
-.logo-Right .logo-Peng img {
-  width: 80px;
-  display: flex;
-  align-items: center;
-}
-.logo-Right .logo-Name {
-  font-size: 80px;
-  font-family: YCH;
+.headerNav .logo .logo-Peng img {
+  max-width: 80px;
 }
 
 @media (max-width: 500px) {
   body {
-    background-image: url(./img/bgs.png);
+    background-image: url(./img/bgs2.png);
     width: 100%;
     min-height: 100%;
     background-size: cover;
@@ -92,15 +85,6 @@ ol {
   .headerNav .logo {
     margin-top: 4vh;
     color: black;
-  }
-  .logo-Right .logo-Peng {
-    width: 40px;
-    display: flex;
-    align-items: center;
-  }
-  .logo-Right .logo-Name {
-    font-size: 50px;
-    font-family: "油菜花手绘字体";
   }
 }
 /* 搜索栏 */
@@ -113,7 +97,7 @@ ol {
   margin-right: auto;
 }
 .searchForm :hover {
-  border: 1px solid rgba(221, 221, 221, 1);
+  border: 1px solid rgb(250, 247, 247);
 }
 .searchForm input {
   width: 100%;
@@ -122,7 +106,7 @@ ol {
   padding: 0 10px;
   /* border: none; */
   background: rgba(241, 241, 240, 0);
-  border: 1px solid rgba(221, 221, 221, 0.3);
+  border: 1px solid rgba(221, 221, 221, 0.6);
   border-radius: 4px;
   color: aliceblue;
 }
